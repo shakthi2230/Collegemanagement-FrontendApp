@@ -10,7 +10,7 @@ const Home = () => {
           Welcome to Shakthi Institute of College System
         </h1>
         <p className="fs-5 text-muted">
-          Access students and facultys information seamlessly. Choose your login to get started.
+          Access student and faculty information seamlessly. Choose your login to get started.
         </p>
 
         <Row className="mt-4 justify-content-center">

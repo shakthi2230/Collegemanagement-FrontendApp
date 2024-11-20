@@ -18,7 +18,7 @@ const StudentList = () => {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-      // navigate('/');
+      navigate('/');
     } else {
       fetchStudents();
     }
@@ -91,7 +91,7 @@ const StudentList = () => {
   return (
     <>
       
-      <NavbarComponent onLogout={() => navigate('/student-login')} />
+      <NavbarComponent onLogout={() => navigate('/')} />
 
       <Container className="mt-5 pt-5">
         <h3 className="text-center mb-4">Students List</h3>
