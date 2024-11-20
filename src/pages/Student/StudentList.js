@@ -18,7 +18,7 @@ const StudentList = () => {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-      navigate('/');
+      // navigate('/');
     } else {
       fetchStudents();
     }
