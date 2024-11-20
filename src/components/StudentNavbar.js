@@ -8,12 +8,16 @@ const StudentNavbar = ({ onLogout }) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Student Dashboard</Navbar.Brand>
-        <Nav className="d-flex flex-grow-1 justify-content-around">
-          <Nav.Link onClick={() => navigate('/studentupdateprofile')}>Update Profile</Nav.Link>
-          <Nav.Link onClick={() => navigate('/assignmentslist')}>Subject Works</Nav.Link>
-          <Button variant="outline-light" onClick={onLogout}>Logout</Button>
-        </Nav>
+        <Navbar.Brand href="/student-dashboard">Student Dashboard</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="w-100 d-flex justify-content-around align-items-center">
+            <Nav.Link onClick={() => navigate('/student-dashboard')}> Profile</Nav.Link>
+            <Nav.Link onClick={() => navigate('/studentupdateprofile')}>Update Profile</Nav.Link>
+            <Nav.Link onClick={() => navigate('/assignmentslist')}>Subject Works</Nav.Link>
+            <Button variant="outline-light" onClick={onLogout}>Logout</Button>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

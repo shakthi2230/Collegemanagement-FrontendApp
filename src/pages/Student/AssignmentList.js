@@ -61,7 +61,7 @@ const AssignmentList = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh" }}>
    
       <StudentNavbar />
 
