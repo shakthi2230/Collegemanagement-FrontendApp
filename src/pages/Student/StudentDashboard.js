@@ -71,8 +71,8 @@ const StudentDashboard = () => {
               </Col>
               <Col md={6}>
                 <div className="p-3 bg-white rounded shadow-sm">
-                  <h6 className="text-muted">Language</h6>
-                  <p className="mb-0"><FaLanguage className="me-2" /> English (UK)</p>
+                  <h6 className="text-muted">Gender</h6>
+                  <p className="mb-0"><FaLanguage className="me-2" /> {student.gender}</p>
                 </div>
               </Col>
               <Col md={6}>
@@ -85,6 +85,19 @@ const StudentDashboard = () => {
                 <div className="p-3 bg-white rounded shadow-sm">
                   <h6 className="text-muted">Email</h6>
                   <p className="mb-0"><FaEnvelope className="me-2" /> {student.email}</p>
+                </div>
+              </Col>
+            
+              <Col md={6}>
+                <div className="p-3 bg-white rounded shadow-sm">
+                  <h6 className="text-muted">address</h6>
+                  <p className="mb-0"><FaEnvelope className="me-2" /> {student.address}</p>
+                </div>
+              </Col>
+              <Col md={6}>
+                <div className="p-3 bg-white rounded shadow-sm">
+                  <h6 className="text-muted">blood Group</h6>
+                  <p className="mb-0"><FaEnvelope className="me-2" /> {student.blood_group}</p>
                 </div>
               </Col>
             </Row>
