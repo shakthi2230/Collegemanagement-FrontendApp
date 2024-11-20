@@ -4,7 +4,7 @@ import axios from "axios";
 import { StudentContext } from "../../context/StudentContext";
 import BASE_URL from "../../config";
 import { useNavigate } from "react-router-dom";
-import NavbarComponent from '../../components/NavbarComponent';
+import NavbarComponent from '../../components/StudentNavbar';
 import { FaUserAlt, FaUserEdit, FaImage } from 'react-icons/fa'; 
 
 const StudentUpdateProfile = () => {
