@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Table, Container, Button, Alert, Image, Modal, Form } from 'react-bootstrap';
-import { Tab, Tabs } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button, Image, Alert, Modal, Tabs, Tab, Form } from 'react-bootstrap'
 import axios from 'axios';
 import BASE_URL from '../../config';
 import NavbarComponent from '../../components/NavbarComponent';
@@ -94,79 +93,86 @@ const StudentList = () => {
       
       <NavbarComponent onLogout={() => navigate('/student-login')} />
 
-      <Container className="mt-5 pt-5">
+      <Container className="mt-5 ">
         <h3 className="text-center mb-4">Students List</h3>
         {error && <Alert variant="danger">{error}</Alert>}
 
         {students.length > 0 ? (
-          <Table className="table-hover responsive ">
-            <thead className="table-dark">
-              <tr>
-                <th>Id</th>
-                <th>Profile</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>DOB</th>
-                <th>Gender</th>
-                <th>Blood Group</th>
-                <th>Contact</th>
-                <th>Address</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {students.map((student, index) => (
-                <tr
-                  key={student.id}
-                  className="shadow-sm bg-white mb-2 rounded align-middle"
-                  style={{
-                    marginBottom: '1rem',
-                    borderRadius: '10px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <td>{index + 1}</td>
-                  <td>
-                    <Image
-                      src={student.profile_pic}
-                      alt="Profile"
-                      roundedCircle
-                      width={50}
-                      height={50}
-                      className="border"
-                    />
-                  </td>
-                  <td>{student.first_name}</td>
-                  <td>{student.last_name}</td>
-                  <td>{student.email}</td>
-                  <td>{student.dob}</td>
-                  <td>{student.gender}</td>
-                  <td>{student.blood_group}</td>
-                  <td>{student.contact_number}</td>
-                  <td>{student.address}</td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      onClick={() => handleEditClick(student)}
-                      className="me-2"
-                    >
-                      Edit
-                    </Button>
-                    
-                  </td>
-                  <td><Button
-                      variant="danger"
-                      onClick={() => handleDeleteStudent(student.id)}
-                      className="ms-2"
-                    >
-                      Delete
-                    </Button></td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+             <Row>
+             <Col>
+               <div className="table-responsive">
+                 <Table className="table-hover">
+                   <thead className="table-dark">
+                     <tr>
+                       <th>Id</th>
+                       <th>Profile</th>
+                       <th>First Name</th>
+                       <th>Last Name</th>
+                       <th>Email</th>
+                       <th>DOB</th>
+                       <th>Gender</th>
+                       <th>Blood Group</th>
+                       <th>Contact</th>
+                       <th>Address</th>
+                       <th>Edit</th>
+                       <th>Delete</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     {students.map((student, index) => (
+                       <tr
+                         key={student.id}
+                         className="shadow-sm bg-white mb-2 rounded align-middle"
+                         style={{
+                           marginBottom: '1rem',
+                           borderRadius: '10px',
+                           overflow: 'hidden',
+                         }}
+                       >
+                         <td>{index + 1}</td>
+                         <td>
+                           <Image
+                             src={student.profile_pic}
+                             alt="Profile"
+                             roundedCircle
+                             width={50}
+                             height={50}
+                             className="border"
+                           />
+                         </td>
+                         <td>{student.first_name}</td>
+                         <td>{student.last_name}</td>
+                         <td>{student.email}</td>
+                         <td>{student.dob}</td>
+                         <td>{student.gender}</td>
+                         <td>{student.blood_group}</td>
+                         <td>{student.contact_number}</td>
+                         <td>{student.address}</td>
+                         <td>
+                           <Button
+                             variant="primary"
+                             onClick={() => handleEditClick(student)}
+                             className="me-2"
+                           >
+                             Edit
+                           </Button>
+                         </td>
+                         <td>
+                           <Button
+                             variant="danger"
+                             onClick={() => handleDeleteStudent(student.id)}
+                             className="ms-2"
+                           >
+                             Delete
+                           </Button>
+                         </td>
+                       </tr>
+                     ))}
+                   </tbody>
+                 </Table>
+               </div>
+             </Col>
+           </Row>
 
         ) : (
           <p>No students found.</p>
