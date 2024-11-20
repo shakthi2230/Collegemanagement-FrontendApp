@@ -112,7 +112,8 @@ const StudentList = () => {
                 <th>Blood Group</th>
                 <th>Contact</th>
                 <th>Address</th>
-                <th>Actions</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -153,14 +154,15 @@ const StudentList = () => {
                     >
                       Edit
                     </Button>
-                    <Button
+                    
+                  </td>
+                  <td><Button
                       variant="danger"
                       onClick={() => handleDeleteStudent(student.id)}
                       className="ms-2"
                     >
                       Delete
-                    </Button>
-                  </td>
+                    </Button></td>
                 </tr>
               ))}
             </tbody>
