@@ -91,7 +91,7 @@ const StudentList = () => {
   return (
     <>
       
-      <NavbarComponent onLogout={() => navigate('/')} />
+      <NavbarComponent onLogout={() => navigate('/student-login')} />
 
       <Container className="mt-5 pt-5">
         <h3 className="text-center mb-4">Students List</h3>
