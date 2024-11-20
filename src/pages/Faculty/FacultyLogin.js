@@ -19,7 +19,7 @@ const Login = () => {
         if (success) {
             navigate("/faculty-dashboard");
         } else {
-            alert("Login failed");
+            alert("Invalid email or password");
         }
     };
 

@@ -26,7 +26,7 @@ export const FacultyProvider = ({ children }) => {
                 sessionStorage.setItem("faculty", JSON.stringify(data.faculty));
                 return { success: true };
             } else {
-                alert(data.message || "Login failed");
+                alert(data.message || "Invalid email or password");
                 return { success: false };
             }
         } catch (error) {
