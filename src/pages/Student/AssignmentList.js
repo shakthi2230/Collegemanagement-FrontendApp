@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Container, Table, Spinner } from "react-bootstrap";
-import { StudentContext } from "../../context/StudentContext"; // Import StudentContext
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
+import { StudentContext } from "../../context/StudentContext"; 
+import BASE_URL from '../../config';
+import StudentNavbar from "../../components/StudentNavbar";  
 
 const AssignmentList = () => {
-  const { student } = useContext(StudentContext); // Access student data from context
-  const [assignments, setAssignments] = useState([]);  // Ensure it's an empty array
+  const { student } = useContext(StudentContext); 
+  const [assignments, setAssignments] = useState([]);  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);  
@@ -20,15 +22,13 @@ const AssignmentList = () => {
     const fetchAssignments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/student/${student.id}/assignments/`
+          `${BASE_URL}/api/student/${student.id}/assignments/`
         );
-        console.log("API Response: ", response); // Log the entire response
-
+        console.log("API Response: ", response);
         if (response.data.message) {
-          setMessage(response.data.message);  // Set the custom message from the response
+          setMessage(response.data.message); 
         }
-
-        // Safely check if 'assignments' exists and is an array
+        
         const assignmentsData = Array.isArray(response.data.assignments) ? response.data.assignments : [];
         setAssignments(assignmentsData);
       } catch (err) {
@@ -61,46 +61,46 @@ const AssignmentList = () => {
   }
 
   return (
-    <Container className="mt-5">
-      <h1 className="text-center">Assignments</h1>
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Faculty</th>
-            <th>Subject</th>
-            <th>Assigned Students</th>
-          </tr>
-        </thead>
-        <tbody>
-          {assignments && assignments.length === 0 ? (
-            // If no assignments, display empty rows with just headers
-            <tr>
-              <td colSpan="6" className="text-center">
-                No assignments available.
-              </td>
-            </tr>
-          ) : (
-            assignments.map((assignment) => (
-              <tr key={assignment.id}>
-                <td>{assignment.title}</td>
-                <td>{assignment.description}</td>
-                <td>{new Date(assignment.due_date).toLocaleString()}</td>
-                <td>{assignment.faculty}</td>
-                <td>{assignment.subject}</td>
-                <td>
-                  {assignment.students && assignment.students.length > 0
-                    ? assignment.students.join(", ")
-                    : "No students assigned"}
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </Table>
-    </Container>
+    <div style={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+   
+      <StudentNavbar />
+
+      <Container className="mt-5">
+        <h1 className="text-center mb-5">Assignments</h1>
+
+        
+        {assignments.length === 0 ? (
+          <h4 className="text-center">No assignments available.</h4>
+        ) : (
+          <Row>
+            {assignments.map((assignment) => (
+              <Col md={4} key={assignment.id} className="mb-4">
+                <Card className="shadow-sm">
+                  <Card.Body>
+                    <Card.Title>{assignment.title}</Card.Title>
+                    <Card.Text>
+                      <strong>Description:</strong> {assignment.description}
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Due Date:</strong> {new Date(assignment.due_date).toLocaleString()}
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Faculty:</strong> {assignment.faculty_first_name}
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Subject:</strong> {assignment.subject_name}
+                    </Card.Text>
+                    <Button variant="primary" className="w-100">
+                      View Details
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        )}
+      </Container>
+    </div>
   );
 };
 

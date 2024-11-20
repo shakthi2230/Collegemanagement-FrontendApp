@@ -1,17 +1,20 @@
 import React, { createContext, useState, useEffect } from "react";
+import BASE_URL from '../config';
 
 export const FacultyContext = createContext();
 
 export const FacultyProvider = ({ children }) => {
+    
     const [faculty, setFaculty] = useState(() => {
-        // Load faculty data from localStorage on initialization
-        const savedFaculty = localStorage.getItem("faculty");
+
+        const savedFaculty = sessionStorage.getItem("faculty");
+
         return savedFaculty ? JSON.parse(savedFaculty) : null;
     });
 
     const login = async (email, password) => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/faculty/login/", {
+            const response = await fetch(`${BASE_URL}/api/faculty/login/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
@@ -19,8 +22,8 @@ export const FacultyProvider = ({ children }) => {
             const data = await response.json();
             if (response.ok) {
                 setFaculty(data.faculty);
-                // Save faculty data to localStorage
-                localStorage.setItem("faculty", JSON.stringify(data.faculty));
+                // Save faculty data to sessionStorage
+                sessionStorage.setItem("faculty", JSON.stringify(data.faculty));
                 return { success: true };
             } else {
                 alert(data.message || "Login failed");
@@ -35,17 +38,17 @@ export const FacultyProvider = ({ children }) => {
 
     const logout = () => {
         setFaculty(null);
-        // Remove faculty data from localStorage
-        localStorage.removeItem("faculty");
+        // Remove faculty data from sessionStorage
+        sessionStorage.removeItem("faculty");
     };
 
     useEffect(() => {
         // Debugging: Log faculty data
-        console.log("Faculty data:", faculty);
+        console.log("Faculty data in context:", faculty);
     }, [faculty]);
 
     return (
-        <FacultyContext.Provider value={{ faculty, login, logout }}>
+        <FacultyContext.Provider value={{ faculty, login, logout, setFaculty }}>
             {children}
         </FacultyContext.Provider>
     );

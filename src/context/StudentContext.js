@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import BASE_URL from '../config';
 
 export const StudentContext = createContext();
 
@@ -10,7 +11,7 @@ export const StudentProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/student/login/", {
+            const response = await fetch(`${BASE_URL}/api/student/login/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
