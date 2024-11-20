@@ -26,7 +26,7 @@ const StudentDashboard = () => {
           <Col md={3} className="d-flex flex-column align-items-start">
             <div className="text-center mb-4">
               <img
-                src={`${BASE_URL}/${student.profile_pic}`}
+                src={`${BASE_URL}${student.profile_pic}`}
                 alt="Profile"
                 className="rounded-circle"
                 style={{
