@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { FacultyContext } from '.././context/FacultyContext';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const FacultyNavbar = () => {
-    const [isStudentDropdownOpen, setStudentDropdownOpen] = useState(false);
-    const [isSubjectDropdownOpen, setSubjectDropdownOpen] = useState(false);
+    // const [isStudentDropdownOpen, setStudentDropdownOpen] = useState(false);
+    // const [isSubjectDropdownOpen, setSubjectDropdownOpen] = useState(false);
     const navigate = useNavigate();
-    const { logout } = useContext(FacultyContext);
+    const {logout} = useContext(FacultyContext);
 
     const handleLogout = () => {
         logout();
@@ -39,7 +39,7 @@ const FacultyNavbar = () => {
                             <NavDropdown.Item href="/faculty-assignments">View All Students</NavDropdown.Item>                                                
                         </NavDropdown>
                        
-                        <Button variant="outline-light" >Logout</Button>
+                        <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
                         
                     </Nav>
                 </Navbar.Collapse>
