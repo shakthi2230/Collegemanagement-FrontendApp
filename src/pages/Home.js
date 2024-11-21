@@ -14,8 +14,8 @@ const Home = () => {
         padding: '2rem',
       }}
     >
-      <Container fluid   className="text-center " style={{ maxWidth: '900px' }}>
-    
+      <Container fluid className="text-center " style={{ maxWidth: '900px' }}>
+
         <h1 style={{ fontWeight: '600', fontSize: '2.5rem', color: '#333', marginBottom: '1.5rem' }}>
           Welcome to our College managemnt
         </h1>
@@ -23,16 +23,17 @@ const Home = () => {
           Access student and faculty information seamlessly. Choose your login to get started.
         </p>
 
- 
-        <Row className="mt-4 justify-content-center">
-      
+
+        <Row className="mt-4 d-flex justify-content-around">
+
           <Col lg={5} md={6} sm={8} xs={12} className="mb-4">
             <Card
               style={{
                 backgroundColor: '#ffffff',
                 borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease-in-out',
+                boxShadow: '0 14px 12px rgba(58, 175, 211, 0.8)',
+                // transition: 'transform 0.3s ease-in-out',
+
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -40,16 +41,31 @@ const Home = () => {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(58, 175, 211, 0.8)';
               }}
             >
               <Card.Body className="text-center">
                 <i className="bi bi-person-circle" style={{ fontSize: '2rem', color: '#007bff' }}></i>
                 <h3 style={{ fontWeight: '500', color: '#007bff', marginTop: '1rem' }}>Student Login</h3>
                 <p style={{ color: '#666' }}>Access your courses, grades, and personal details.</p>
-                <Button href="/student-login" variant="primary" style={{ fontWeight: 'bold', padding: '0.5rem 2rem' }}>
+                <Button
+                  href="/student-login"
+                  variant="primary"
+                  style={{
+                    fontWeight: 'bold',
+                    padding: '0.5rem 2rem',
+                    transition: 'transform 0.3s ease-in-out', 
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)'; 
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                >
                   Login as Student
                 </Button>
+
               </Card.Body>
             </Card>
           </Col>
@@ -60,8 +76,8 @@ const Home = () => {
               style={{
                 backgroundColor: '#ffffff',
                 borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                transition: 'transform 0.3s ease-in-out',
+                boxShadow: '0 14px 12px rgba(80, 228, 49, 0.8)',
+                // transition: 'transform 0.3s ease-in-out',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -69,16 +85,31 @@ const Home = () => {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(80, 228, 49, 0.8)';
               }}
             >
               <Card.Body className="text-center">
                 <i className="bi bi-person-badge-fill" style={{ fontSize: '2rem', color: '#28a745' }}></i>
                 <h3 style={{ fontWeight: '500', color: '#28a745', marginTop: '1rem' }}>Faculty Login</h3>
                 <p style={{ color: '#666' }}>Manage student records, subjects, and class information.</p>
-                <Button href="/faculty-login" variant="success" style={{ fontWeight: 'bold', padding: '0.5rem 2rem' }}>
+                <Button
+                  href="/faculty-login"
+                  variant="success"
+                  style={{
+                    fontWeight: 'bold',
+                    padding: '0.5rem 2rem',
+                    transition: 'transform 0.3s ease-in-out', 
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)'; 
+                  }}
+                >
                   Login as Faculty
                 </Button>
+
               </Card.Body>
             </Card>
           </Col>
